@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Report - Dev Daimand Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f2f5f3;
+    }
+    .container{
+      max-width:420px;
+      margin:auto;
+      padding-bottom:80px;
+    }
+    .header{
+      background:#1fa463;
+      color:#fff;
+      padding:18px;
+      text-align:center;
+      border-bottom-left-radius:20px;
+      border-bottom-right-radius:20px;
+    }
+    .card{
+      background:#fff;
+      margin:15px;
+      padding:15px;
+      border-radius:14px;
+      box-shadow:0 5px 15px rgba(0,0,0,.08);
+      text-align:center;
+    }
+    .card h3{
+      margin:0;
+      font-size:14px;
+      color:#555;
+    }
+    .amount{
+      font-size:22px;
+      font-weight:bold;
+      margin-top:6px;
+    }
+    .sale{color:#1fa463;}
+    .udhar{color:#e53935;}
+
+    .list{
+      margin:15px;
+    }
+    .item{
+      background:#fff;
+      padding:12px;
+      border-radius:12px;
+      margin-bottom:10px;
+      box-shadow:0 3px 10px rgba(0,0,0,.06);
+      font-size:14px;
+    }
+
+    .nav{
+      position:fixed;
+      bottom:0;
+      width:100%;
+      max-width:420px;
+      display:flex;
+      background:#fff;
+      border-top:1px solid #ddd;
+    }
+    .nav a{
+      flex:1;
+      text-align:center;
+      padding:12px;
+      text-decoration:none;
+      color:#555;
+      font-size:12px;
+    }
+    .nav a.active{
+      color:#1fa463;
+      font-weight:bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h2>Reports</h2>
+      <p>Daily / Monthly Summary</p>
+    </div>
+
+    <div class="card">
+      <h3>Total Sale</h3>
+      <div class="amount sale">₹ 1,000</div>
+    </div>
+
+    <div class="card">
+      <h3>Total Udhar</h3>
+      <div class="amount udhar">₹ 500</div>
+    </div>
+
+    <div class="list">
+      <div class="item">10 Apr – Sale ₹300</div>
+      <div class="item">12 Apr – Udhar ₹200</div>
+      <div class="item">15 Apr – Sale ₹700</div>
+    </div>
+
+  </div>
+
+  <div class="nav">
+    <a href="dashboard.html">Home</a>
+    <a href="customer.html">Customers</a>
+    <a href="add-entry.html">Add</a>
+    <a href="report.html" class="active">Report</a>
+  </div>
+
+</body>
+</html>
