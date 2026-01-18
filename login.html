@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+  background:linear-gradient(160deg,#179b5f,#c9f5e2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.card{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  border-radius:26px;
+  padding:28px 22px;
+  box-shadow:0 20px 40px rgba(0,0,0,.18);
+}
+h2{text-align:center;margin:0}
+p{text-align:center;color:#666;font-size:14px}
+label{font-size:13px}
+input{
+  width:100%;
+  padding:14px;
+  margin-top:6px;
+  margin-bottom:14px;
+  border-radius:12px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:14px;
+  background:#1fa463;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+}
+.link{
+  text-align:center;
+  margin-top:14px;
+}
+.link a{text-decoration:none;color:#1fa463}
+.otp-box{display:none}
+.error{color:#e53935;font-size:13px;text-align:center}
+.info{color:#1fa463;font-size:13px;text-align:center}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Login</h2>
+  <p>Enter your mobile number</p>
+
+  <div id="step1">
+    <label>Mobile Number</label>
+    <input id="mobile" type="number" placeholder="Enter mobile number">
+    <button onclick="sendOTP()">Send OTP</button>
+    <div class="info">Demo mode (OTP is fixed)</div>
+  </div>
+
+  <div id="step2" class="otp-box">
+    <label>Enter OTP</label>
+    <input id="otp" type="number" placeholder="123456">
+    <button onclick="verifyOTP()">Verify & Login</button>
+    <div class="error" id="error"></div>
+  </div>
+
+  <div class="link">
+    <a href="index.html">← Back</a>
+  </div>
+</div>
+
+<script>
+const DEMO_OTP = "123456";
+
+function sendOTP(){
+  const mobile = document.getElementById("mobile").value;
+  if(mobile.length !== 10){
+    alert("Enter valid 10 digit mobile number");
+    return;
+  }
+  document.getElementById("step1").style.display="none";
+  document.getElementById("step2").style.display="block";
+}
+
+function verifyOTP(){
+  const otp = document.getElementById("otp").value;
+  if(otp === DEMO_OTP){
+    localStorage.setItem("loggedIn","yes");
+    window.location.href="shop-setup.html";
+  }else{
+    document.getElementById("error").innerText="Invalid OTP";
+  }
+}
+</script>
+
+</body>
+</html>
