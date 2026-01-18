@@ -1,98 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Dev Daimand Tool - Hisab Kitab</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Dev Daimand Tool</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(to bottom, #1fa463, #e8fff4);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  min-height:100vh;
+  background: linear-gradient(160deg,#179b5f,#bff2dc);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-    .container {
-      width: 100%;
-      max-width: 420px;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
+.card{
+  width:100%;
+  max-width:420px;
+  background:rgba(255,255,255,0.96);
+  border-radius:26px;
+  padding:32px 24px;
+  text-align:center;
+  box-shadow:0 25px 50px rgba(0,0,0,.18);
+}
 
-    .logo {
-      width: 90px;
-      height: 90px;
-      background: #1fa463;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 28px;
-      font-weight: bold;
-      margin: 0 auto 20px;
-    }
+.logo-wrap{
+  width:96px;
+  height:96px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#1fa463,#13824c);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 25px rgba(31,164,99,.45);
+}
 
-    h1 {
-      margin: 0;
-      font-size: 24px;
-      color: #222;
-    }
+/* LOGO TEXT */
+.logo-text{
+  color:#fff;
+  font-size:34px;
+  font-weight:700;
+  letter-spacing:1px;
+}
 
-    p {
-      color: #666;
-      font-size: 14px;
-      margin-top: 8px;
-    }
+h1{
+  margin:0;
+  font-size:24px;
+  color:#1f2d2a;
+  font-weight:700;
+}
 
-    .illustration {
-      margin: 25px 0;
-      font-size: 60px;
-    }
+.tagline{
+  margin-top:6px;
+  font-size:14px;
+  color:#5f6f6b;
+}
 
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      font-size: 16px;
-      background: #1fa463;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      text-decoration: none;
-      margin-top: 20px;
-    }
+.divider{
+  height:1px;
+  background:#e6ecea;
+  margin:22px 0;
+}
 
-    .btn:hover {
-      background: #168a52;
-    }
-  </style>
+.feature{
+  display:flex;
+  justify-content:space-around;
+  margin-bottom:24px;
+}
+
+.feature div{
+  text-align:center;
+  font-size:12px;
+  color:#4b5a56;
+}
+
+.feature span{
+  display:block;
+  font-size:22px;
+  margin-bottom:4px;
+}
+
+.btn{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:600;
+  background:linear-gradient(135deg,#1fa463,#169155);
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(31,164,99,.4);
+}
+
+.btn:active{
+  transform:scale(.98);
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
 
-    <div class="logo">DD</div>
+<div class="card">
 
-    <h1>Dev Daimand Tool</h1>
-    <p>Smart Hisab Kitab for Shopkeepers</p>
-
-    <div class="illustration">
-      📒💰📊
-    </div>
-
-    <a href="login.html" class="btn">
-      Get Started
-    </a>
-
+  <!-- LOGO -->
+  <div class="logo-wrap">
+    <div class="logo-text">DD</div>
   </div>
+
+  <h1>Dev Daimand Tool</h1>
+  <div class="tagline">Smart Hisab Kitab for Shopkeepers</div>
+
+  <div class="divider"></div>
+
+  <!-- FEATURES -->
+  <div class="feature">
+    <div>
+      <span>₹</span>
+      Udhar
+    </div>
+    <div>
+      <span>📈</span>
+      Sale
+    </div>
+    <div>
+      <span>📊</span>
+      Reports
+    </div>
+  </div>
+
+  <button class="btn" onclick="startApp()">Get Started</button>
+
+</div>
+
+<script>
+function startApp(){
+  window.location.href="login.html";
+}
+</script>
+
 </body>
 </html>
