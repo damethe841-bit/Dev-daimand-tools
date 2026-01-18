@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Dev Daimand Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to bottom, #1fa463, #e8fff4);
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .box{
+      width:100%;
+      max-width:420px;
+      background:#fff;
+      border-radius:20px;
+      padding:25px 20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+    h2{
+      margin:0;
+      color:#222;
+      text-align:center;
+    }
+    p{
+      text-align:center;
+      color:#666;
+      font-size:14px;
+      margin-top:6px;
+    }
+    .input{
+      margin-top:20px;
+    }
+    .input label{
+      font-size:13px;
+      color:#333;
+    }
+    .input input{
+      width:100%;
+      padding:12px;
+      margin-top:6px;
+      border-radius:10px;
+      border:1px solid #ccc;
+      font-size:15px;
+      outline:none;
+    }
+    .btn{
+      margin-top:22px;
+      width:100%;
+      padding:14px;
+      background:#1fa463;
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      font-size:16px;
+      cursor:pointer;
+    }
+    .btn:hover{
+      background:#168a52;
+    }
+    .otp{
+      display:none;
+    }
+    .back{
+      text-align:center;
+      margin-top:15px;
+      font-size:13px;
+    }
+    .back a{
+      text-decoration:none;
+      color:#1fa463;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h2>Login</h2>
+    <p>Enter your mobile number</p>
+
+    <div class="input">
+      <label>Mobile Number</label>
+      <input type="number" placeholder="Enter mobile number" id="mobile">
+    </div>
+
+    <button class="btn" onclick="sendOTP()">Send OTP</button>
+
+    <!-- OTP SECTION -->
+    <div class="otp" id="otpBox">
+      <div class="input">
+        <label>Enter OTP</label>
+        <input type="number" placeholder="123456">
+      </div>
+      <button class="btn" onclick="login()">Verify & Login</button>
+    </div>
+
+    <div class="back">
+      <a href="index.html">← Back</a>
+    </div>
+  </div>
+
+  <script>
+    function sendOTP(){
+      document.getElementById("otpBox").style.display = "block";
+      alert("Demo OTP sent: 123456");
+    }
+    function login(){
+      window.location.href = "shop-setup.html";
+    }
+  </script>
+</body>
+</html>
