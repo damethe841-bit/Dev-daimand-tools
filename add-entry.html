@@ -1,167 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Add Entry - Dev Daimand Tool</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Add Entry</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body{
-      margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:#f2f5f3;
-    }
-    .container{
-      max-width:420px;
-      margin:auto;
-      padding-bottom:80px;
-    }
-    .header{
-      background:#1fa463;
-      color:#fff;
-      padding:18px;
-      text-align:center;
-    }
-    .box{
-      background:#fff;
-      margin:15px;
-      padding:20px;
-      border-radius:16px;
-      box-shadow:0 5px 15px rgba(0,0,0,.08);
-    }
-    label{
-      font-size:13px;
-      color:#333;
-    }
-    input, select{
-      width:100%;
-      padding:12px;
-      margin-top:6px;
-      margin-bottom:14px;
-      border-radius:10px;
-      border:1px solid #ccc;
-      font-size:15px;
-      outline:none;
-    }
-    .type{
-      display:flex;
-      gap:10px;
-      margin-bottom:14px;
-    }
-    .type button{
-      flex:1;
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      font-size:14px;
-      cursor:pointer;
-      color:#fff;
-    }
-    .udhar{ background:#e53935; }
-    .sale{ background:#1e88e5; }
-
-    .btn{
-      width:100%;
-      padding:14px;
-      background:#1fa463;
-      color:#fff;
-      border:none;
-      border-radius:12px;
-      font-size:16px;
-      cursor:pointer;
-    }
-
-    .nav{
-      position:fixed;
-      bottom:0;
-      width:100%;
-      max-width:420px;
-      display:flex;
-      background:#fff;
-      border-top:1px solid #ddd;
-    }
-    .nav a{
-      flex:1;
-      text-align:center;
-      padding:12px;
-      text-decoration:none;
-      color:#555;
-      font-size:12px;
-    }
-    .nav a.active{
-      color:#1fa463;
-      font-weight:bold;
-    }
-  </style>
+<style>
+body{margin:0;font-family:Arial;background:#f2f5f3}
+.container{max-width:420px;margin:auto;padding-bottom:80px}
+.header{background:#1fa463;color:#fff;padding:20px;text-align:center}
+.box{background:#fff;margin:15px;padding:20px;border-radius:16px}
+label{font-size:13px}
+input,select{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #ccc}
+.type{display:flex;gap:10px}
+.type button{flex:1;padding:12px;border:none;border-radius:10px;color:#fff}
+.udhar{background:#e53935}
+.sale{background:#1e88e5}
+.btn{width:100%;margin-top:15px;padding:14px;background:#1fa463;color:#fff;border:none;border-radius:12px}
+.nav{position:fixed;bottom:0;width:100%;max-width:420px;display:flex;background:#fff;border-top:1px solid #ddd}
+.nav a{flex:1;text-align:center;padding:12px;text-decoration:none;color:#555}
+.nav a.active{color:#1fa463;font-weight:bold}
+</style>
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
 
-    <div class="header">
-      <h2>Add Entry</h2>
-      <p>Udhar / Sale</p>
-    </div>
+<div class="header">
+<h2>Add Entry</h2>
+<p>Udhar / Sale</p>
+</div>
 
-    <div class="box">
+<div class="box">
+<label>Customer Name</label>
+<input id="customer" placeholder="Enter customer name">
 
-      <label>Customer</label>
-      <select id="customer">
-        <option>Amit</option>
-        <option>Ramesh</option>
-        <option>Suresh</option>
-      </select>
+<label>Amount ₹</label>
+<input type="number" id="amount">
 
-      <label>Amount (₹)</label>
-      <input type="number" id="amount" placeholder="Enter amount">
+<div class="type">
+<button class="udhar" onclick="setType('Udhar')">Udhar</button>
+<button class="sale" onclick="setType('Sale')">Sale</button>
+</div>
 
-      <label>Entry Type</label>
-      <div class="type">
-        <button class="udhar" onclick="setType('Udhar')">Udhar</button>
-        <button class="sale" onclick="setType('Sale')">Sale</button>
-      </div>
+<label>Date</label>
+<input type="date" id="date">
 
-      <label>Date</label>
-      <input type="date" id="date">
+<label>Note</label>
+<input placeholder="Optional note">
 
-      <label>Note</label>
-      <input type="text" placeholder="Optional note">
+<button class="btn" onclick="saveEntry()">Save Entry</button>
+</div>
 
-      <button class="btn" onclick="saveEntry()">Save Entry</button>
-    </div>
+</div>
 
-  </div>
+<div class="nav">
+<a href="dashboard.html">Home</a>
+<a href="customer.html">Customers</a>
+<a href="add-entry.html" class="active">Add</a>
+<a href="report.html">Report</a>
+</div>
 
-  <div class="nav">
-    <a href="dashboard.html">Home</a>
-    <a href="customer.html">Customers</a>
-    <a href="add-entry.html" class="active">Add</a>
-    <a href="report.html">Report</a>
-  </div>
+<script>
+let entryType="Udhar";
 
-  <script>
-    let entryType = "Udhar";
+function setType(t){entryType=t}
 
-    function setType(type){
-      entryType = type;
-      alert(type + " selected");
-    }
+function saveEntry(){
+const data=JSON.parse(localStorage.getItem("entries")||"[]");
 
-    function saveEntry(){
-      let entry = {
-        customer: document.getElementById("customer").value,
-        amount: document.getElementById("amount").value,
-        type: entryType,
-        date: document.getElementById("date").value
-      };
+data.push({
+customer:document.getElementById("customer").value,
+amount:Number(document.getElementById("amount").value),
+type:entryType,
+date:document.getElementById("date").value
+});
 
-      let data = JSON.parse(localStorage.getItem("entries") || "[]");
-      data.push(entry);
-      localStorage.setItem("entries", JSON.stringify(data));
+localStorage.setItem("entries",JSON.stringify(data));
+window.location.href="dashboard.html";
+}
+</script>
 
-      alert("Entry Saved Successfully");
-      window.location.href = "dashboard.html";
-    }
-  </script>
 </body>
 </html>
